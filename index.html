@@ -2521,14 +2521,27 @@
             }
             
             playAgainBtn.onclick = runGame;
-            const mouseMoveHandler = (e) => {
+            // ... inside initCatchTheStarsGame()
+
+            const moveHandler = (e) => {
                 if(isGameOver) return;
                 const rect = canvas.getBoundingClientRect();
-                moon.x = e.clientX - rect.left - moon.width / 2;
+                // Check if it's a touch event or a mouse event to get the correct coordinate
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                
+                moon.x = clientX - rect.left - moon.width / 2;
+
                 if (moon.x < 0) moon.x = 0;
                 if (moon.x > canvas.width - moon.width) moon.x = canvas.width - moon.width;
+
+                // Prevent the page from scrolling when dragging a finger on the game canvas
+                if (e.touches) e.preventDefault();
             };
-            canvas.addEventListener('mousemove', mouseMoveHandler);
+
+            // Add event listeners for BOTH mouse and touch movements
+            canvas.addEventListener('mousemove', moveHandler);
+            canvas.addEventListener('touchmove', moveHandler, { passive: false });
+
             window.addEventListener('resize', resizeCanvas);
             runGame();
         }
@@ -2886,6 +2899,7 @@
 
 </body>
 </html>
+
 
 
 
