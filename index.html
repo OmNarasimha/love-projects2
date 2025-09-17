@@ -130,7 +130,7 @@
             font-size: 0.9rem;
             color: #831843;
         }
-       
+        
         /* --- HOME PAGE ANIMATION --- */
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -444,7 +444,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             border: 2px solid white;
         }
-       
+        
         #dream-input {
             background: rgba(255,255,255,0.5);
             border-color: rgba(236, 72, 153, 0.3);
@@ -516,7 +516,7 @@
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-       
+        
         /* --- NEW: LETTER PAGE STYLES (ENVELOPE) --- */
         .envelope-wrapper {
             position: relative;
@@ -690,7 +690,7 @@
             50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,255,255,0.7); }
             100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.3); }
         }
-       
+        
         /* --- UPDATED No Button --- */
         #noBtn {
             transition: all 0.3s ease;
@@ -777,7 +777,7 @@
             background-color: white;
             transform: scale(1.05);
         }
-       
+        
         /* Game 1: Catch the Stars */
         #catch-the-stars-game #game-canvas {
             border-radius: 20px;
@@ -969,7 +969,6 @@
             font-weight: bold;
             min-height: 24px;
         }
-
     </style>
 </head>
 <body>
@@ -986,7 +985,7 @@
             <button id="login-button" class="mt-4 bg-pink-600 text-white font-bold py-3 px-10 rounded-full shadow-lg shadow-pink-500/50 hover:bg-pink-700 transform hover:scale-105 transition">Enter Our World</button>
         </div>
     </div>
-   
+    
     <!-- Header is hidden until login is successful -->
     <header id="app-header" class="fixed top-0 w-full hidden">
         <nav id="main-nav" class="container mx-auto px-4">
@@ -1028,7 +1027,7 @@
             <div class="container mx-auto px-4 py-12 text-center">
                 <h2 class="font-playfair text-3xl md:text-4xl text-pink-900 mb-2">Our Unforgettable Chapters</h2>
                 <p class="text-pink-800 mb-4">Manam kalisi digina prathi photo ki oka back story untundhi aa story nadipinchedhi... ni paina naku unna PREMA.</p>
-               
+                
                 <!-- UPDATED: Removed "Dreams" from here -->
                 <div id="moments-tabs" class="flex justify-center">
                     <button class="moment-tab-btn active" data-tab="gallery">Gallery</button>
@@ -1038,7 +1037,7 @@
                 <div id="gallery" class="moments-tab-content active">
                     <div id="moments-gallery" class="relative w-full max-w-4xl mx-auto"></div>
                 </div>
-               
+                
                 <div id="grid" class="moments-tab-content">
                     <div id="photo-grid-container" class="max-w-5xl mx-auto"></div>
                 </div>
@@ -1092,7 +1091,7 @@
                 </div>
             </div>
         </section>
-       
+        
         <!-- =================================================================================== -->
         <!-- START: NEW IMPROVED LETTER PAGE -->
         <!-- =================================================================================== -->
@@ -1100,7 +1099,7 @@
             <div class="container mx-auto px-4 py-12 text-center">
                 <h2 class="font-playfair text-3xl md:text-4xl text-pink-900 mb-2">A Letter For You</h2>
                 <p class="text-pink-800 mb-8">Manasulo unna matalaki seal vesi mari Badraparichanu Gouri (antey avi mana secrets kadha )</p>
-               
+                
                 <div id="envelopeWrapper" class="envelope-wrapper">
                     <div class="envelope">
                         <div class="flap"></div>
@@ -1180,12 +1179,17 @@
                 .jt-milestone-node.jt-pulse-anim {
                     animation: jt-pulse 2s infinite ease-in-out;
                 }
+                /* --- MODIFIED: Journey Card for Scrolling --- */
                 .jt-card {
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     width: 90%;
                     max-width: 400px;
+                    /* ADDED: Max-height to control size and allow scrolling */
+                    max-height: 70vh; 
+                    /* ADDED: Overflow to enable vertical scrolling when content is too long */
+                    overflow-y: auto;
                     background: linear-gradient(135deg, #fff1f2 0%, #fdf2f8 100%);
                     border-radius: 1rem;
                     padding: 1.5rem;
@@ -1224,7 +1228,11 @@
                     transform: scale(1.1);
                 }
                 .jt-card h3 { font-family: 'Playfair Display', serif; }
-                .jt-card p { font-size: 0.95rem; }
+                .jt-card p { 
+                    font-size: 0.95rem;
+                    /* ADDED: Padding at the bottom for better scrolling experience */
+                    padding-bottom: 1rem;
+                }
 
                 .jt-legend {
                     position: absolute;
@@ -1285,7 +1293,7 @@
                 </div>
                 <button id="jt-replay-btn" class="jt-replay-btn">Replay Journey</button>
             </div>
-           
+            
             <!-- JavaScript for the Enhanced Journey Tree -->
             <script>
                 // This script is self-contained for the Journey Tree section.
@@ -1317,7 +1325,7 @@
                     function buildTree() {
                         // Clear previous content
                         container.innerHTML = '';
-                       
+                        
                         const isMobile = window.innerWidth <= 768;
 
                         const treeWrapper = document.createElement('div');
@@ -1331,15 +1339,15 @@
                         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
                         treeWrapper.appendChild(svg);
-                       
+                        
                         // Create containers for cards and particles
                         const cardsContainer = document.createElement('div');
                         const particleContainer = document.createElement('div');
                         treeWrapper.appendChild(cardsContainer);
                         treeWrapper.appendChild(particleContainer);
-                       
+                        
                         container.appendChild(treeWrapper);
-                       
+                        
                         // Build UI based on screen size
                         if (isMobile) {
                             buildMobileVine(svg, treeWrapper, cardsContainer);
@@ -1347,12 +1355,12 @@
                             buildDesktopTree(svg, treeWrapper, cardsContainer);
                             buildLegend();
                         }
-                       
+                        
                         createParticles(particleContainer, isMobile);
                         setupEventListeners();
                         animateTree();
                     }
-                   
+                    
                     function buildDesktopTree(svg, wrapper, cardsContainer) {
                         const paths = [
                             'M 400 600 C 400 500, 380 450, 380 400', // Trunk
@@ -1365,7 +1373,7 @@
                             'M 240 200 C 280 150, 220 100, 200 50',   // Branch far left
                             'M 560 230 C 500 180, 600 100, 600 30',   // Branch far right
                         ];
-                       
+                        
                         paths.forEach(d => {
                             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                             path.setAttribute('d', d);
@@ -1380,19 +1388,19 @@
                             createCard(item, cardsContainer);
                         });
                     }
-                   
+                    
                     function buildMobileVine(svg, wrapper, cardsContainer) {
                         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                         path.setAttribute('d', 'M 400 600 V 20');
                         path.setAttribute('class', 'jt-branch');
                         svg.appendChild(path);
-                       
+                        
                         const totalMilestones = milestoneData.length;
                         milestoneData.forEach((item, index) => {
                             const yPercentage = 95 - (index / (totalMilestones -1)) * 90;
                             const xPercentage = (index % 2 === 0) ? 45 : 55;
                             item.mobilePos = { x: `${xPercentage}%`, y: `${yPercentage}%` };
-                           
+                            
                             createNode(item, wrapper, 'mobile');
                             createCard(item, cardsContainer);
                         });
@@ -1412,7 +1420,7 @@
                         const pos = device === 'mobile' ? item.mobilePos : item.desktopPos;
                         node.style.left = pos.x;
                         node.style.top = pos.y;
-                       
+                        
                         wrapper.appendChild(node);
                     }
 
@@ -1430,13 +1438,13 @@
                         `;
                         cardsContainer.appendChild(card);
                     }
-                   
+                    
                     function buildLegend() {
                         const legend = document.createElement('div');
                         legend.className = 'jt-legend';
                         legend.innerHTML = '<h3 class="font-playfair text-lg text-pink-900 mb-2">Our Story</h3>';
                         const list = document.createElement('ul');
-                       
+                        
                         milestoneData.forEach(item => {
                             const li = document.createElement('li');
                             li.className = 'jt-legend-item text-pink-800';
@@ -1444,11 +1452,11 @@
                             li.dataset.milestoneId = item.id;
                             list.appendChild(li);
                         });
-                       
+                        
                         legend.appendChild(list);
                         container.appendChild(legend);
                     }
-                   
+                    
                     function createParticles(particleContainer, isMobile) {
                         const particleCount = isMobile ? 15 : 30;
                         const particles = '♡♥';
@@ -1457,7 +1465,7 @@
                             p.className = 'jt-particle';
                             p.textContent = particles[Math.floor(Math.random() * particles.length)];
                             particleContainer.appendChild(p);
-                           
+                            
                             gsap.set(p, {
                                 x: gsap.utils.random(0, container.clientWidth),
                                 y: gsap.utils.random(0, container.clientHeight * 1.2),
@@ -1485,7 +1493,7 @@
                                 document.querySelectorAll('.jt-milestone-node').forEach(n => n.classList.add('jt-pulse-anim'));
                             }
                         });
-                       
+                        
                         const branches = document.querySelectorAll('.jt-branch');
                         const nodes = document.querySelectorAll('.jt-milestone-node');
                         const svg = document.querySelector('.jt-svg');
@@ -1495,13 +1503,13 @@
                             gsap.set(nodes, { opacity: 1, scale: 1 });
                             return;
                         }
-                       
+                        
                         // --- FASTER ANIMATION: Animate branches drawing ---
                         branches.forEach(branch => {
                             const length = branch.getTotalLength();
                             gsap.set(branch, { strokeDasharray: length, strokeDashoffset: length });
                             mainTimeline.to(branch, { strokeDashoffset: 0, duration: 1, ease: 'power1.inOut' }, "-=0.8"); // FASTER
-                           
+                            
                             // Sprout leaves along the branches
                              for(let i = 0; i < 10; i++) {
                                 const leaf = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -1519,7 +1527,7 @@
                                 }, "-=0.05"); // FASTER
                             }
                         });
-                       
+                        
                         // Animate nodes appearing
                         mainTimeline.to(nodes, {
                             opacity: 1,
@@ -1562,7 +1570,7 @@
                             const node = e.target.closest('.jt-milestone-node');
                             const legendItem = e.target.closest('.jt-legend-item');
                             const closeBtn = e.target.closest('.jt-card-close-btn');
-                           
+                            
                             if (node) {
                                 showCard(node.dataset.milestoneId);
                             } else if (legendItem) {
@@ -1587,7 +1595,7 @@
                                 hideAllCards();
                             }
                         });
-                       
+                        
                         document.getElementById('jt-replay-btn').addEventListener('click', () => {
                               document.querySelectorAll('.jt-milestone-node').forEach(n => n.classList.remove('jt-pulse-anim'));
                             if (mainTimeline) mainTimeline.restart();
@@ -1602,12 +1610,12 @@
         <!-- =================================================================================== -->
         <!-- END: Animated Journey Tree Page -->
         <!-- =================================================================================== -->
-           
+            
         <!-- Game Page -->
         <section id="game" class="page flex flex-col items-center justify-center">
              <div class="container mx-auto px-4 py-12 text-center max-w-4xl">
                     <div class="bg-white/20 p-8 md:p-12 rounded-lg shadow-2xl shadow-pink-900/50">
-                       
+                        
                         <div id="game-menu">
                             <h2 class="font-playfair text-3xl md:text-4xl text-pink-900">FREE FIRE ANTHA KAKAPOYINA EDHO NIKOSAM EE GAMES</h2>
                             <p class="text-pink-800 my-4">Pick a game to play, my love!</p>
@@ -1650,7 +1658,7 @@
                            <div id="qualities-game-grid"></div>
                            <div id="qualities-status-message">Whoops! Not that one.</div>
                         </div>
-                       
+                        
                         <div id="memory-game" class="game-container">
                            <button class="back-to-games-btn">← Back to Games</button> <h2 class="font-playfair text-3xl md:text-4xl text-pink-900">Memory Match</h2>
                            <p class="text-pink-800 my-4">Match the moments that made us!</p>
@@ -1676,7 +1684,7 @@
         <section id="question" class="page flex justify-center items-center">
             <div class="question-overlay"></div>
             <div class="question-content text-center flex flex-col items-center p-4">
-               
+                
                 <div id="pre-proposal-text" class="opacity-0 max-w-2xl">
                     <h2 class="font-playfair text-3xl md:text-4xl text-pink-200 mb-4">Gouri, our journey has been incredible...</h2>
                     <p class="text-white/80 text-lg md:text-xl mb-8">From a simple prank to a love that feels like destiny. Every laugh, every challenge, and every quiet moment has led us here. To this one, perfect moment, Nennu ninnu adugudham anukuna one FINAL QUESTION.</p>
@@ -1689,14 +1697,14 @@
                             <stop offset="100%" style="stop-color:#831843; stop-opacity:1" />
                         </linearGradient>
                          <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-                              <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.4"/>
-                            </filter>
+                             <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.4"/>
+                           </filter>
                     </defs>
                     <path d="M 20 60 L 20 90 L 80 90 L 80 60 L 50 45 Z" fill="url(#boxGrad)" filter="url(#shadow)"/>
                     <path d="M 20 60 L 50 45 L 80 60" fill="#f472b6" />
                     <g class="ring">
-                      <circle cx="50" cy="40" r="10" fill="none" stroke="#eab308" stroke-width="3" />
-                      <rect x="47" y="22" width="6" height="6" fill="#f0abfc" stroke="#a21caf" stroke-width="1" transform="rotate(45 50 25)" />
+                       <circle cx="50" cy="40" r="10" fill="none" stroke="#eab308" stroke-width="3" />
+                       <rect x="47" y="22" width="6" height="6" fill="#f0abfc" stroke="#a21caf" stroke-width="1" transform="rotate(45 50 25)" />
                     </g>
                     <path class="box-lid" d="M 20 60 L 50 45 L 80 60 L 50 75 Z" fill="url(#boxGrad)" filter="url(#shadow)"/>
                     <path class="box-lid" d="M 20 60 L 50 45 L 80 60" fill="#f9a8d4" />
@@ -1725,7 +1733,7 @@
             <div class="text-5xl text-pink-500">💍</div>
         </div>
     </div>
-   
+    
     <div id="moments-surprise-modal">
         <div class="modal-box">
             <button class="close-btn" title="Close">×</button>
@@ -1736,7 +1744,7 @@
     <!-- NEW: Modal for Spin the Wheel results -->
     <div id="wheel-result-modal" class="fixed top-0 left-0 w-full h-full bg-black/80 flex justify-center items-center hidden">
          <div class="modal-box">
-            <button class="close-btn" title="Close">×</button>
+            <button class="close-btn" title="Close">X</button>
             <h2 class="font-great-vibes text-5xl text-pink-800 mb-2">You Won...</h2>
             <p id="wheel-result-text" class="text-pink-700 my-4 text-3xl font-playfair font-bold"></p>
         </div>
@@ -1773,10 +1781,10 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, Draggable);
-       
+        
         // --- Login screen entrance animation ---
         gsap.from('#login-overlay > div', { duration: 1.5, x: '100vw', ease: 'power3.out', delay: 0.5 });
-       
+        
         // --- Set initial background to GIF ---
         document.body.classList.add('gif-background');
 
@@ -1791,14 +1799,14 @@
         const passwordInput = document.getElementById('password-input');
         const pages = document.querySelectorAll('.page');
         const errorMessage = document.getElementById('error-message');
-       
+        
         let momentsInitialized = false;
         let letterInitialized = false;
         let journeyInitialized = false;
         let questionInitialized = false;
         let photoGridInitialized = false; 
         let dreamsInitialized = false; // NEW flag for the Dreams page
-       
+        
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const noBtnMessage = document.getElementById('no-btn-message');
@@ -1821,7 +1829,7 @@
         function setupEventListeners() {
             loginButton.addEventListener('click', unlockPage);
             passwordInput.addEventListener('keyup', (event) => { if (event.key === "Enter") unlockPage(); });
-           
+            
             mainNav.addEventListener('click', (e) => {
                 if (e.target.matches('.nav-link')) {
                     e.preventDefault();
@@ -1829,13 +1837,13 @@
                     showPage(pageId);
                 }
             });
-           
+            
             const momentsModal = document.getElementById('moments-surprise-modal');
             momentsModal.querySelector('.close-btn').addEventListener('click', hideMomentsSurprise);
             momentsModal.addEventListener('click', (e) => {
                  if(e.target === momentsModal) hideMomentsSurprise();
             });
-           
+            
             document.getElementById('moments-tabs').addEventListener('click', (e) => {
                 if(e.target.matches('.moment-tab-btn')) {
                     const tabId = e.target.dataset.tab;
@@ -1898,7 +1906,7 @@
             if (newPage) {
                 newPage.classList.add('active');
                 newPage.scrollTop = 0; 
-               
+                
                 if (pageId === 'welcome') {
                     const welcomeContent = document.querySelector('#welcome > div');
                     const heading = welcomeContent.querySelector('h1');
@@ -1909,7 +1917,7 @@
                         });
                     }
                 }
-               
+                
                 if (pageId === 'letter' && !letterInitialized) {
                     initLetterPage();
                     letterInitialized = true;
@@ -1927,14 +1935,14 @@
                     initDreamsPage();
                     dreamsInitialized = true;
                 }
-               
+                
                 if (pageId === 'journey' && !journeyInitialized) {
                     if (typeof initJourneyPage === 'function') {
                         initJourneyPage();
                     }
                     journeyInitialized = true;
                 }
-               
+                
                 if (pageId === 'game') {
                     showGameMenu();
                 }
@@ -1943,7 +1951,7 @@
                     questionInitialized = true;
                 }
             }
-           
+            
             const navLinks = mainNav.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.classList.remove('nav-active');
@@ -1970,7 +1978,7 @@
                 container.appendChild(particle);
             }
         }
-       
+        
         function startCountdown() {
             const countDownDate = new Date(specialDate).getTime();
             const x = setInterval(function() {
@@ -1997,7 +2005,7 @@
             modal.style.visibility = 'visible';
             gsap.to(modal, { opacity: 1, duration: 0.5 });
             gsap.fromTo(modalContent, { scale: 0.8 }, { scale: 1, duration: 0.5, ease: 'back.out(1.7)' });
-           
+            
             const duration = 5 * 1000;
             const end = Date.now() + duration;
             (function frame() {
@@ -2035,7 +2043,7 @@
                 <p class="text-lg font-bold text-pink-600">${hisSign} ♐</p>
             `;
         }
-       
+        
         function showMomentsSurprise() {
             const modal = document.getElementById('moments-surprise-modal');
             modal.style.visibility = 'visible';
@@ -2066,7 +2074,7 @@
             if (gallery.children.length > 0) return;
 
              const photos = [
-                  { src: "https://images.unsplash.com/photo-1525389993338-9bee0a48b813?auto=format&fit=crop&w=800&q=80", caption: "Our First Meeting" },
+                  { src: "g1.jpg", caption: "Our First Meeting" },
                   { src: "https://images.unsplash.com/photo-1541845157-a6d2d100c931?auto=format&fit=crop&w=800&q=80", caption: "My Birthday" },
                   { src: "https://images.unsplash.com/photo-1518989229642-bee7f8241864?auto=format&fit=crop&w=800&q=80", caption: "Bus Journeys" },
                   { src: "https://images.unsplash.com/photo-1529252321422-5a2a11b8163f?auto=format&fit=crop&w=800&q=80", caption: "Our Zoo Date" },
@@ -2100,7 +2108,7 @@
                         <img src="${photo.src}" alt="${photo.caption}" onerror="this.onerror=null;this.src='https://placehold.co/120x110/fbcfe8/831843?text=Memory';">
                         <p>${photo.caption}</p>
                   `;
-                 
+                  
                   const pos = heartCoords[index % heartCoords.length];
                   gsap.set(photoEl, { top: pos.y, left: pos.x, transform: `translate(-50%, -50%) rotate(${Math.random()*20-10}deg)` });
 
@@ -2116,15 +2124,15 @@
                      scale: 1, 
                      stagger: {
                           from: "center",
-                          amount: 0.5
+                         amount: 0.5
                      },
                      ease: 'back.out(1.7)',
                      onComplete: () => {
                           if (!sessionStorage.getItem('momentsSurpriseShown')) {
-                               setTimeout(() => {
-                                   showMomentsSurprise();
-                                   sessionStorage.setItem('momentsSurpriseShown', 'true');
-                               }, 1000);
+                              setTimeout(() => {
+                                  showMomentsSurprise();
+                                  sessionStorage.setItem('momentsSurpriseShown', 'true');
+                              }, 1000);
                           }
                      }
                  }
@@ -2137,28 +2145,28 @@
 
             const photoData = {
                 "Special Days": [
-                    { src: "https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&w=800&q=80", caption: "The Day We Met" },
-                    { src: "https://images.unsplash.com/photo-1519225421980-715cb0215a0d?auto=format&fit=crop&w=800&q=80", caption: "Your Birthday" },
-                    { src: "https://images.unsplash.com/photo-1606823190206-f649354731b7?auto=format&fit=crop&w=800&q=80", caption: "My Birthday" },
-                    { src: "https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?auto=format&fit=crop&w=800&q=80", caption: "Anniversary of Our Prank" },
-                    { src: "https://images.unsplash.com/photo-1542282218-803b3c072ab8?auto=format&fit=crop&w=800&q=80", caption: "Our First Festival" },
-                    { src: "https://images.unsplash.com/photo-1533246232533-517a1a451515?auto=format&fit=crop&w=800&q=80", caption: "New Year's Eve" },
+                    { src: "g1.jpg", caption: "The Day We Met" },
+                    { src: "g2.jpg", caption: "our First pick together" },
+                    { src: "g5.jpg", caption: "My Birthday Cake" },
+                    { src: "g6.jpg", caption: "First Bus Journey" },
+                    { src: "g7.jpg", caption: "Happy video calls" },
+                    { src: "g8.jpg", caption: "My Boiled egg Anger" },
                 ],
                 "Our Trips": [
-                    { src: "p1.png", caption: "Mountain Getaway" },
-                    { src: "p1.png", caption: "Mountain Retreat" },
-                    { src: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=800&q=80", caption: "City Exploration" },
-                    { src: "https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=800&q=80", caption: "Roadtrip Adventures" },
-                    { src: "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=800&q=80", caption: "Exploring Together" },
-                    { src: "https://images.unsplash.com/photo-1498307833015-e7b400441eb8?auto=format&fit=crop&w=800&q=80", caption: "Next Destination?" },
+                    { src: "a1.jpg", caption: "Sunrise with YOU" },
+                    { src: "a2.jpg", caption: "Elephant Zoo" },
+                    { src: "a3.jpg", caption: "City Tours" },
+                    { src: "a4.jpg", caption: "Alpha malai" },
+                    { src: "a5.jpg", caption: "No shawarmaday" },
+                    { src: "a6.jpg", caption: "Droping her to clg" },
                 ],
                 "Random Moments": [
                     { src: "p4.jgp", caption: "water bottle" },
-                    { src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80", caption: "Dinner Nights" },
-                    { src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80", caption: "Concert Lights" },
-                    { src: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?auto=format&fit=crop&w=800&q=80", caption: "Lazy Afternoons" },
-                    { src: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=800&q=80", caption: "Sharing a Book" },
-                    { src: "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?auto=format&fit=crop&w=800&q=80", caption: "Cooking Together" },
+                    { src: "p2.jpg", caption: "Sighting her" },
+                    { src: "p3.jpg", caption: "Random vlogs" },
+                    { src: "p5.jpg", caption: "My obsession" },
+                    { src: "a7.jpg", caption: "PILLA BAGUNDHI" },
+                    { src: "a8.jpg", caption: "VIDU ENTI NANU CHUSTHUNADU" },
                 ]
             };
 
@@ -2196,7 +2204,7 @@
                 });
             }
         }
-       
+        
         function showLightbox(src, caption) {
             let lightbox = document.getElementById('lightbox-overlay');
             if (!lightbox) {
@@ -2214,7 +2222,7 @@
 
             lightbox.querySelector('img').src = src;
             lightbox.querySelector('p').textContent = caption;
-           
+            
             lightbox.style.visibility = 'visible';
             gsap.to(lightbox, { opacity: 1, duration: 0.3 });
             gsap.from(lightbox.querySelector('#lightbox-content'), { scale: 0.8, duration: 0.3, ease: 'back.out(1.7)' });
@@ -2230,7 +2238,7 @@
                 });
             }
         }
-       
+        
         // --- NEW IMPROVED Letter Page Animation ---
         function initLetterPage() {
             const envelopeWrapper = document.getElementById('envelopeWrapper');
@@ -2377,7 +2385,7 @@
                 }
             });
         }
-       
+        
         // --- GAME LOGIC ---
         function showGameMenu() {
             clearAllGameIntervals();
@@ -2391,7 +2399,7 @@
             document.getElementById('game-menu').style.display = 'none';
             document.querySelectorAll('.game-container').forEach(c => c.style.display = 'none');
             document.getElementById(`${gameId}-game`).style.display = 'block';
-           
+            
             switch(gameId) {
                 case 'catch-the-stars': initCatchTheStarsGame(); break;
                 case 'qualities': initQualitiesGame(); break;
@@ -2400,7 +2408,7 @@
                 case 'spin-the-wheel': initSpinTheWheelGame(); break;
             }
         }
-       
+        
         function initCatchTheStarsGame() {
             const canvas = document.getElementById('game-canvas');
             const scoreEl = document.getElementById('score');
@@ -2501,29 +2509,29 @@
             function endGame() {
                 isGameOver = true;
                 clearAllGameIntervals();
-               
+                
                 const finalScore = 143; // Set final score to 143
                 scoreEl.textContent = finalScore;
 
                 ctx.fillStyle = 'rgba(30, 41, 59, 0.7)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-               
+                
                 ctx.textAlign = 'center'; 
                 ctx.fillStyle = 'white'; 
-               
+                
                 ctx.shadowColor = '#f9a8d4';
                 ctx.shadowBlur = 20;
-               
+                
                 ctx.font = `30px "Great Vibes", cursive`; 
                 ctx.fillText(`Your score is ${finalScore}`, canvas.width / 2, canvas.height / 2 - 20);
                 ctx.font = `40px "Great Vibes", cursive`; 
                 ctx.fillText(`you won me!`, canvas.width / 2, canvas.height / 2 + 30);
-               
+                
                 ctx.shadowBlur = 0;
-               
+                
                 playAgainBtn.style.display = 'inline-block';
             }
-           
+            
             function runGame() {
                 isGameOver = false; playAgainBtn.style.display = 'none'; resizeCanvas();
                 score = 0; time = 30; fallingItems = []; particles = [];
@@ -2547,7 +2555,7 @@
                     fallingItems.push(new FallingItem(x, -size, size, speed, type));
                 }, 400); // Slightly faster generation
             }
-           
+            
             playAgainBtn.onclick = runGame;
             // ... inside initCatchTheStarsGame()
 
@@ -2556,7 +2564,7 @@
                 const rect = canvas.getBoundingClientRect();
                 // Check if it's a touch event or a mouse event to get the correct coordinate
                 const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-               
+                
                 moon.x = clientX - rect.left - moon.width / 2;
 
                 if (moon.x < 0) moon.x = 0;
@@ -2573,7 +2581,7 @@
             window.addEventListener('resize', resizeCanvas);
             runGame();
         }
-       
+        
         function initQualitiesGame() {
             const grid = document.getElementById('qualities-game-grid');
             const foundCounter = document.getElementById('qualities-found');
@@ -2588,7 +2596,7 @@
                 { text: 'Always Late', type: 'negative' }, { text: 'Steals Fries', type: 'negative' },
                 { text: 'Sings Off-Key', type: 'negative' }
             ].sort(() => 0.5 - Math.random());
-           
+            
             let foundCount = 0;
             grid.innerHTML = '';
             foundCounter.textContent = '0';
@@ -2641,8 +2649,8 @@
                  card.className = 'memory-card';
                  card.dataset.icon = icon;
                  card.innerHTML = `
-                        <div class="card-face card-front">${icon}</div>
-                        <div class="card-face card-back">♥</div>
+                         <div class="card-face card-front">${icon}</div>
+                         <div class="card-face card-back">♥</div>
                  `;
                  grid.appendChild(card);
              });
@@ -2678,7 +2686,7 @@
                  }
              }
         }
-       
+        
         function initQuizGame() {
             const questions = [
                 { q: "What started our entire story?", o: ["A text message", "A phone call", "An Instagram prank", "A chance meeting"], a: 2 },
@@ -2693,11 +2701,11 @@
             ];
             let currentQ = 0;
             let score = 0;
-           
+            
             const questionEl = document.getElementById('quiz-question');
             const optionsEl = document.getElementById('quiz-options');
             const feedbackEl = document.getElementById('quiz-feedback');
-           
+            
             function showQuestion() {
                 if (currentQ >= questions.length) {
                     optionsEl.innerHTML = '';
@@ -2752,16 +2760,16 @@
             ];
             const numSegments = segments.length;
             const anglePerSegment = 360 / numSegments;
-           
+            
             function drawWheel() {
                 const centerX = canvas.width / 2;
                 const centerY = canvas.height / 2;
                 const radius = canvas.width / 2 - 10;
-               
+                
                 ctx.clearRect(0,0,canvas.width, canvas.height);
                 ctx.save();
                 ctx.translate(centerX, centerY);
-               
+                
                 segments.forEach((segment, i) => {
                     ctx.beginPath();
                     ctx.moveTo(0,0);
@@ -2790,7 +2798,7 @@
                 if(spinBtn.disabled) return;
                 spinBtn.disabled = true;
                 const spinAngle = Math.random() * 360 + 360 * 5; 
-               
+                
                 gsap.to(canvas, {
                     rotation: `+=${spinAngle}`,
                     duration: 5,
@@ -2810,14 +2818,14 @@
             };
             drawWheel();
         }
-       
+        
         function showWheelResult(text) {
             const modal = document.getElementById('wheel-result-modal');
             document.getElementById('wheel-result-text').innerHTML = text;
             modal.classList.remove('hidden');
             gsap.from(modal.querySelector('.modal-box'), { scale: 0.7, opacity: 0, duration: 0.5, ease: 'back.out(1.7)' });
         }
-       
+        
         function hideWheelResult() {
              const modal = document.getElementById('wheel-result-modal');
              gsap.to(modal.querySelector('.modal-box'), { scale: 0.7, opacity: 0, duration: 0.3, ease: 'power2.in', onComplete: () => {
@@ -2841,12 +2849,12 @@
 
                 const wrapperRect = buttonWrapper.getBoundingClientRect();
                 const btnRect = noBtn.getBoundingClientRect();
-               
+                
                 const newTop = Math.random() * (wrapperRect.height - btnRect.height);
                 const newLeft = Math.random() * (wrapperRect.width - btnRect.width);
 
                 gsap.to(noBtn, { top: newTop, left: newLeft, duration: 0.4, ease: 'power2.out' });
-               
+                
                 noBtnMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
                 gsap.to(noBtnMessage, { opacity: 1, visibility: 'visible', duration: 0.2 });
 
@@ -2899,7 +2907,7 @@
                         onComplete: () => particle.remove()
                     });
                 }
-               
+                
                 gsap.timeline()
                   .to(preProposalText, { opacity: 0, duration: 1 })
                   .to(proposalContainer, { opacity: 1, duration: 1 }, "-=0.5")
@@ -2911,13 +2919,13 @@
                       ease: "back.out",
                       stagger: 0.05,
                       onStart: function() {
-                           gsap.to(this.targets(), {
-                               textShadow: "0 0 20px #fff, 0 0 40px #f9a8d4, 0 0 60px #f9a8d4",
-                               duration: 1.5,
-                               ease: "power2.out",
-                               yoyo: true,
-                               repeat: -1
-                           });
+                          gsap.to(this.targets(), {
+                              textShadow: "0 0 20px #fff, 0 0 40px #f9a8d4, 0 0 60px #f9a8d4",
+                              duration: 1.5,
+                              ease: "power2.out",
+                              yoyo: true,
+                              repeat: -1
+                          });
                       }
                   }, "-=0.5");
             }, { once: true });
@@ -2927,5 +2935,3 @@
 
 </body>
 </html>
-
-
