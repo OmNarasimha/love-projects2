@@ -130,7 +130,7 @@
             font-size: 0.9rem;
             color: #831843;
         }
-        
+       
         /* --- HOME PAGE ANIMATION --- */
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -395,63 +395,56 @@
             top: 2px;
         }
 
-        /* --- DREAMS PAGE: NEW Dream Jar --- */
+        /* --- DREAMS PAGE: REVISED Notice Board --- */
         #dream-jar-wrapper {
-            height: 400px;
+            height: auto;
+            min-height: 400px;
             position: relative;
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .dream-jar {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 250px;
-            height: 350px;
-            background: rgba(252, 231, 243, 0.4);
-            border: 3px solid rgba(255, 255, 255, 0.7);
-            border-radius: 125px 125px 20px 20px;
-            backdrop-filter: blur(3px);
-            box-shadow: inset 0 0 20px rgba(219, 39, 119, 0.2), 0 10px 30px rgba(88, 28, 135, 0.1);
-        }
-        .dream-jar::before { /* Jar Opening */
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 30px;
-            background: rgba(252, 231, 243, 0.6);
-            border-radius: 10px;
-            border: 3px solid rgba(255, 255, 255, 0.7);
-        }
-        .dream-jar::after { /* Glassy Highlight */
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 20px;
-            width: 50px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            transform: rotate(25deg);
-            filter: blur(10px);
+        .notice-board {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            min-height: 350px;
+            background: #fdf2f8;
+            border: 10px solid #e8c2d1;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(88, 28, 135, 0.2), inset 0 0 5px rgba(0,0,0,0.1);
         }
         .dream-note {
             position: absolute;
-            background: #fff1f2;
-            padding: 5px 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: #fffbeb; /* Creamy yellow for notes */
+            padding: 8px 12px;
+            border-radius: 4px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
             font-family: 'Great Vibes', cursive;
             color: #831843;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             cursor: default;
             white-space: nowrap;
-            opacity: 0; /* Animate in with JS */
+            opacity: 0;
             will-change: transform, opacity;
+            border-bottom: 1px solid #fde68a;
         }
+        .dream-note::before { /* The Pin */
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: #f43f5e; /* Red pin head */
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 2px solid white;
+        }
+       
         #dream-input {
             background: rgba(255,255,255,0.5);
             border-color: rgba(236, 72, 153, 0.3);
@@ -523,7 +516,7 @@
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        
+       
         /* --- NEW: LETTER PAGE STYLES (ENVELOPE) --- */
         .envelope-wrapper {
             position: relative;
@@ -697,7 +690,7 @@
             50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,255,255,0.7); }
             100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.3); }
         }
-        
+       
         /* --- UPDATED No Button --- */
         #noBtn {
             transition: all 0.3s ease;
@@ -784,7 +777,7 @@
             background-color: white;
             transform: scale(1.05);
         }
-        
+       
         /* Game 1: Catch the Stars */
         #catch-the-stars-game #game-canvas {
             border-radius: 20px;
@@ -993,7 +986,7 @@
             <button id="login-button" class="mt-4 bg-pink-600 text-white font-bold py-3 px-10 rounded-full shadow-lg shadow-pink-500/50 hover:bg-pink-700 transform hover:scale-105 transition">Enter Our World</button>
         </div>
     </div>
-    
+   
     <!-- Header is hidden until login is successful -->
     <header id="app-header" class="fixed top-0 w-full hidden">
         <nav id="main-nav" class="container mx-auto px-4">
@@ -1015,7 +1008,7 @@
         <section id="welcome" class="page flex items-center justify-center text-center">
             <div class="bg-white/20 p-10 rounded-2xl shadow-2xl shadow-pink-900/50 max-w-3xl">
                 <h1 class="font-playfair text-4xl md:text-6xl text-pink-900 font-bold">Preyamaina Gouri Prasanna</h1>
-                <p class="mt-4 text-lg text-pink-800">kaalam manakosam rasina kadhaloki na kosam puttina devathaku swagatham.</p>
+                <p class="mt-4 text-lg text-pink-800">Kaalam manakosam rasina kadhaloki na kosam puttina devathaku swagatham.</p>
                 <div class="mt-8">
                     <h3 class="text-pink-900 text-2xl font-playfair">Our Special Day</h3>
                     <div id="countdown" class="text-4xl font-bold text-pink-900 mt-2 flex justify-center"></div>
@@ -1034,8 +1027,8 @@
         <section id="moments" class="page">
             <div class="container mx-auto px-4 py-12 text-center">
                 <h2 class="font-playfair text-3xl md:text-4xl text-pink-900 mb-2">Our Unforgettable Chapters</h2>
-                <p class="text-pink-800 mb-4">From cherished memories to the beautiful future we'll build.</p>
-                
+                <p class="text-pink-800 mb-4">Manam kalisi digina prathi photo ki oka back story untundhi aa story nadipinchedhi... ni paina naku unna PREMA.</p>
+               
                 <!-- UPDATED: Removed "Dreams" from here -->
                 <div id="moments-tabs" class="flex justify-center">
                     <button class="moment-tab-btn active" data-tab="gallery">Gallery</button>
@@ -1045,7 +1038,7 @@
                 <div id="gallery" class="moments-tab-content active">
                     <div id="moments-gallery" class="relative w-full max-w-4xl mx-auto"></div>
                 </div>
-                
+               
                 <div id="grid" class="moments-tab-content">
                     <div id="photo-grid-container" class="max-w-5xl mx-auto"></div>
                 </div>
@@ -1058,54 +1051,56 @@
         <section id="dreams" class="page">
             <div class="container mx-auto px-4 py-12 text-center">
                 <h2 class="font-playfair text-3xl md:text-4xl text-pink-900 mb-2">Our Shared Dreams</h2>
-                <p class="text-pink-800 mb-8 max-w-2xl mx-auto">A collection of the future we're building, one dream at a time. Add a new dream to our jar!</p>
+                <p class="text-pink-800 mb-8 max-w-2xl mx-auto">mana dreams division...Nuvvu ee board paina add chese prathi dream Neraverchedhi Narasimha!</p>
 
-                <!-- NEW: Interactive Dream Jar -->
+                <!-- REVISED: Interactive Notice Board -->
                 <div id="dream-jar-wrapper" class="max-w-md mx-auto">
-                    <!-- The jar and notes will be created here by JavaScript -->
+                    <!-- The notice board and notes will be created here by JavaScript -->
                 </div>
                 <div class="flex justify-center items-center gap-2 max-w-md mx-auto">
                    <input type="text" id="dream-input" class="placeholder-pink-700/50" placeholder="What's our next adventure?">
                    <button id="add-dream-btn">Add Dream</button>
                 </div>
-                <!-- End of new Dream Jar -->
+                <!-- End of new Notice Board -->
 
                 <div id="dreams-container">
                     <div class="dream-section">
                         <h3>✈️ Our Travel Bucket List</h3>
                         <ul class="dream-list text-left space-y-2 text-pink-800">
-                            <li>Night rides in Hyderabad.</li>
-                            <li>A spontaneous Wonderla trip.</li>
-                            <li>You treating me to biryani (finally!).</li>
+                            <li>Hyderabad motham mana idharam on bike Nightride veyali .</li>
+                            <li>Manam kalisi Wonderla velli rollercoster ride cheyali.</li>
+                            <li>Neetho oka Biryani treat tesukovali (ur frnd bday!).</li>
                             <li>A proper rain dance together.</li>
-                            <li>Riding to Manali on a bike.</li>
-                            <li>Camping by the beach under the stars.</li>
-                            <li>Attending functions and festivals as a couple.</li>
-                            <li>Cooking together, even with our small fights.</li>
+                            <li>Nuvvu mokukunatlu ninnu ethukuni metlapai nunchi tirumala vellali.</li>
+                            <li>Camping at the beach counting the stars whole night.</li>
+                            <li>Manam couple bungeejump cheyali .</li>
+                            <li>Neetho kalisi Cooking cheyali.</li>
+                            <li>Oka 1tb memory card full aye ani picks digali.</li>
+                            <li>Nennu thapu chesi dorikina prathisari neetho kotinchukovali.</li>
                         </ul>
                     </div>
                     <div class="dream-section">
                         <h3>🏡 Our Dream House</h3>
-                        <p class="text-pink-800">Imagine a cozy home with a beautiful garden, a kitchen where we cook together, a comfy couch for movie nights, and a small library filled with our favorite books. A place that's truly ours.</p>
+                        <p class="text-pink-800">Mana Home ela undali antey entha mandhi guests vachina manaki unde privacy manaki undali..Full comfortable furniture and oka theater spacious kitchen etc ani undali even walls must close there eyes seeing our romance.</p>
                         <!-- UPDATED IMAGE -->
-                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" alt="A beautiful modern house" class="rounded-lg shadow-lg mx-auto mt-4">
+                        <img src="home1.cms" alt="A beautiful modern house" class="rounded-lg shadow-lg mx-auto mt-4">
                     </div>
                     <div class="dream-section">
                         <h3>💖 Our Future Plans</h3>
-                        <p class="text-pink-800">To always be each other's best friend and biggest supporter. To adopt a dog and name him something silly. To build a life filled with more laughter than tears, more adventures than routines, and a love that grows stronger every single day.</p>
+                        <p class="text-pink-800">Kalisi unnantha kalam okari cheyi okaru vadhulukokunda,prathi okaru manalini chusi kullukuni sache antha happy ga undali..vilu bale okalaki okalu loyal untaru ra anesi market motham talk undela perfect ga..Weekly once movie ki..montly once trips ki..daily once godava paduthu hourly once natho nuvvu sorry chepinchukuntu secondly once nennu ni paina chupinche love ni experience chesthu life long antey naku time saripoye antha varaku kalisi undali adhey mana future plan. .</p>
                     </div>
                 </div>
             </div>
         </section>
-        
+       
         <!-- =================================================================================== -->
         <!-- START: NEW IMPROVED LETTER PAGE -->
         <!-- =================================================================================== -->
         <section id="letter" class="page flex flex-col items-center justify-center p-4">
             <div class="container mx-auto px-4 py-12 text-center">
                 <h2 class="font-playfair text-3xl md:text-4xl text-pink-900 mb-2">A Letter For You</h2>
-                <p class="text-pink-800 mb-8">Words from my heart, sealed with a promise.</p>
-                
+                <p class="text-pink-800 mb-8">Manasulo unna matalaki seal vesi mari Badraparichanu Gouri (antey avi mana secrets kadha )</p>
+               
                 <div id="envelopeWrapper" class="envelope-wrapper">
                     <div class="envelope">
                         <div class="flap"></div>
@@ -1150,7 +1145,7 @@
                     stroke-linecap: round;
                 }
                 .jt-leaf {
-                    fill: #f472b6; /* Leaf color */
+                    fill: #08eb1a; /* Leaf color */
                     opacity: 0;
                     transform-origin: center;
                 }
@@ -1252,11 +1247,11 @@
                 }
                 .jt-legend-item:hover { background-color: rgba(219, 39, 119, 0.2); }
 
+                /* MODIFIED: Replay button positioning */
                 .jt-replay-btn {
                     position: absolute;
-                    bottom: 20px;
-                    left: 50%;
-                    transform: translateX(-50%);
+                    bottom: 200px;
+                    right: 20px; /* Moved to the right */
                     background-color: #db2777;
                     color: white;
                     font-weight: bold;
@@ -1265,7 +1260,7 @@
                     box-shadow: 0 4px 15px rgba(219, 39, 119, 0.4);
                     transition: all 0.2s ease;
                 }
-                .jt-replay-btn:hover { transform: translateX(-50%) scale(1.05); }
+                .jt-replay-btn:hover { transform: scale(1.05); } /* Adjusted hover transform */
 
                 /* Particle effect for journey page */
                 .jt-particle {
@@ -1284,13 +1279,13 @@
 
             <div class="container mx-auto px-4 py-12 text-center h-full flex flex-col">
                 <h2 class="font-playfair text-3xl md:text-4xl text-pink-900">Our Blooming Journey</h2>
-                <p class="text-pink-800 mb-4 max-w-2xl mx-auto">From a single seed of a prank, our love grew into something beautiful. Click on a memory to see it bloom.</p>
+                <p class="text-pink-800 mb-4 max-w-2xl mx-auto">From a single seed of a prank, My love grew into something beautiful. Click on a memory to see it bloom.</p>
                 <div class="jt-container flex-grow">
                     <!-- Journey Tree and milestones will be injected here by JavaScript -->
                 </div>
                 <button id="jt-replay-btn" class="jt-replay-btn">Replay Journey</button>
             </div>
-            
+           
             <!-- JavaScript for the Enhanced Journey Tree -->
             <script>
                 // This script is self-contained for the Journey Tree section.
@@ -1300,19 +1295,19 @@
 
                     // --- CONFIGURATION ---
                     const milestoneData = [
-                        { id: 'prank', date: 'Aug 21, 2024', title: 'The Prank', icon: '💬', story: 'Everything beautiful began with a simple, playful prank. A message sent on a whim that would unknowingly rewrite our stars and start our incredible story.', desktopPos: { x: '50%', y: '95%' } },
-                        { id: 'calls', date: 'Late 2024', title: 'Endless Calls', icon: '📞', story: 'Those late nights turned into early mornings, filled with endless conversations. We shared dreams, fears, and laughter, building a connection that felt deeper than the miles between us.', desktopPos: { x: '40%', y: '80%' } },
-                        { id: 'meeting', date: 'Sep 14, 2024', title: 'First Meeting', icon: '🤝', story: 'The day our digital world became real. Seeing you in person for the first time at LB Nagar wasn’t just a meeting; it was a confirmation of everything I already felt. My heart knew I was home.', desktopPos: { x: '60%', y: '75%' } },
-                        { id: 'dinner', date: 'Sep 15, 2024', title: 'The Dinner Night', icon: '🍽️', story: 'Our first proper date. Sharing a meal felt like sharing a piece of our lives. The food was good, but the company was perfect. It was simple, real, and wonderfully ours.', desktopPos: { x: '35%', y: '60%' } },
-                        { id: 'my-birthday', date: 'Dec 14, 2024', title: 'My Birthday', icon: '🎂', story: 'You made my birthday unforgettable. Your gift, a simple shirt, meant the world to me because it came from you. It was a day I felt truly celebrated and loved.', desktopPos: { x: '65%', y: '55%' } },
-                        { id: 'bus', date: 'Dec 2024', title: 'Bus Journey', icon: '🚌', story: 'Who knew a simple bus ride could feel like a grand adventure? Those journeys, sitting side-by-side, watching the world go by, became some of our most cherished, quiet moments together.', desktopPos: { x: '45%', y: '45%' } },
-                        { id: 'test', date: 'Feb 2025', title: 'A Test of Love', icon: '💔', story: 'February was our storm. A month of silence and uncertainty that tested the strength of our bond. It was painful, but it made us realize that a life without each other was unimaginable.', desktopPos: { x: '55%', y: '35%' } },
-                        { id: 'reunion', date: 'Mar 2025', title: 'Reunion', icon: '🧑‍🤝‍🧑', story: 'And then, March. The moment we found our way back. It wasn’t about forgetting the hurt, but about choosing love. That reunion was a promise that we were stronger than any storm.', desktopPos: { x: '30%', y: '30%' } },
-                        { id: 'gift', date: 'Jun 2025', title: 'The Surprise Gift', icon: '🎁', story: 'Your handcrafted gifts and heartfelt letters were more precious than any store-bought treasure. They were a tangible piece of your heart, a surprise that I will cherish forever.', desktopPos: { x: '70%', y: '25%' } },
-                        { id: 'hug', date: 'Jun 2025', title: 'Our First Hug', icon: '🤗', story: 'In that embrace, all the worries of the world melted away. It was more than just a hug; it was a feeling of safety, of comfort, and of finally being exactly where I was meant to be.', desktopPos: { x: '40%', y: '15%' } },
-                        { id: 'zoo', date: 'Aug 24, 2025', title: 'Zoo Date', icon: '🐘', story: 'A day of pure, simple joy. Walking with you, admiring the elephants, and sharing childlike wonder was a beautiful reminder that the best moments are the ones filled with laughter and you.', desktopPos: { x: '60%', y: '10%' } },
-                        { id: 'kiss', date: 'Aug 26, 2025', title: 'Our First Kiss', icon: '💋', story: 'A moment that stopped time. It wasn’t just a kiss, but the sealing of a promise. It was the beautiful, breathtaking start of our forever.', desktopPos: { x: '25%', y: '5%' } },
-                        { id: 'promise', date: 'Now', title: 'Promise of Love', icon: '💍', story: 'And so our journey leads us here. From a prank to a promise, every step has been a part of this beautiful dance. This is not the end of our story, but the beginning of our forever.', desktopPos: { x: '75%', y: '2%' } }
+                        { id: 'prank', date: 'Oct 21, 2024', title: 'The Prank', icon: '💬', story: 'Andhamaina mana story oka chinna prank ane seed tho start ayindhi 🥰, Edho saradhaga intension lekunda chesina msg manalini intha dhuram tesukuvachindhi antey some magical force exist btw us anesi kadha 💖. Anyways "THANKS FOR CHOOSING ME GOURILU" 🤗😘', desktopPos: { x: '50%', y: '95%' } },
+                        { id: 'calls', date: 'Late 2024', title: 'Endless Calls', icon: '📞', story: 'Ratri start chesthey tellaripoyedhi mana calls 🌙📞. They are so goated! Entha antey vati anthata ave cut ayipoye antha sepu matladukune vallam. Starting lo ayithey kothaga undedhi ✨, Ippudu ayithey addiction ayindhi 🥰. Nuvvu call cheyali nennu "AHH CHEPPU GOURI" Anali, this is the medicine 💊 for my daily HAPPINESS ❤️', desktopPos: { x: '40%', y: '80%' } },
+                        { id: 'meeting', date: 'Nov 14, 2024', title: 'First Meeting', icon: '🤝', story: 'The day our digital world became real 🌟. Nennu ninnu for the first time real ga chusina day. Niku aa day gurinchi chala sarlu cheppi vunta kadha, Aroju neetho matladali anesi chala try chesi comedian ayanu 🤪. Appudu nuvvu anishika pakkane undi thanathoney tirigav, Nathoni eppudu eppudu matladathava anesi chala eager ga 10000 eyes tho chuse rojulu avi 🙏. (Ippatiki alane unta anuko same eager tho 🤗).', desktopPos: { x: '60%', y: '75%' } },
+                        { id: 'dinner', date: 'Nov 15, 2024', title: 'The Dinner Night', icon: '🍽️', story: 'Nennu evari intlo bojanam cheyataniki antha ista pade vadini kadhu 😬, but edho ananad force valla (Antey nuvvu untav anesi 🥰) srihas birthday ki vachanu.. Motham anishika frnds tho srihas frnds tho edho edho la ayithey ayindhi birthday 🥳, but the dinner time 🍽️. Appudu na pakkana nuvvu kurchuni nennu cheyi pettukuni tinta untey 🫣, cheyi teyu teyu ani chepthu na mohamatam ardham chesukuni nennu adagaka mundhey food serve chesi chala baga care chesav gouri 🤗. Aaroju naku nijam ga manaki okaru unnaru anesi feel thepinchav 🥹. THANKS FOR THE SPARK ✨❤️.', desktopPos: { x: '35%', y: '60%' } },
+                        { id: 'my-birthday', date: 'Dec 14, 2024', title: 'My Birthday', icon: '🎂', story: 'Na birthday time ki mi frndship madya na valla gap rakudadhu anesi chala varaku attention ivatam thaginchanu 🤫. Nuvvu nannu antha special ga chusukune antha avasram ledhu... but nuvvu special ga naku gift ichav 🎁. Naku telusu adhi niku nachaledhu anesi but naku adhi chala special and chala istam 🥰. Moreover nennu chepindhi gurthu petukuni naku pedha piece of cake pettav 🍰, naku first wish chesav 🥇. Airport lo natho matladatniki nuvvu shortcut vadilesi natho nadisav ✈️🚶‍♀️🚶‍♂️, and mana idharam matrame digina pick kuda appude 📸. Naku year motham lo nachina week aa week aee gouri ✨. "WAITING FOR THOSE DAYS AGAIN" ⏳❤️.', desktopPos: { x: '65%', y: '55%' } },
+                        { id: 'bus', date: 'Dec 22 2024', title: 'Bus Journey', icon: '🚌', story: 'Bus ride antha special ga untundho evaru chepparu ra 🚍✨… kani nuvvu unna ppudu adi vere world laga anipinchindi. Netho undatam naku chala istam, pakkana undatam inkaaa istam 🤗🫶. Aa istam tho MGBS varaku vachanu, ade istam tho Zaheerabad varaku vellesa 🌄. Telangana lo ila deep ki first time vachanu… traffic ni kuda enjoy chestu, destination ni hate chestu 😂🚦 nenu oka vinta jeevi la feel ayya.Na friends andaruu trip ki vellaru… kani nenu netho vachanu. Guess what? Vallu enjoy chesindantlo 1000 times ekkuva nenu enjoy chesa 💯🎉. Journey motham nuvvu naku explain chesthu, nenu niku “uuu” ani koduthu, pakkapakkana chethulu fold chesukuni kurchuni chalaaa enjoy chesa 😄🫶.A roju naku life lo oka unforgettable day laga nilchindi ❤️📖. Nijanga, adi naa life lo oka madhura memory… ee rojuki gurthochesthe goosebumbs aee💫✨', desktopPos: { x: '45%', y: '45%' } },
+                        { id: 'test', date: 'Feb 2025', title: 'A Test of Love', icon: '💔', story: 'February literally oka storm laga vachindi 🌪️… appatidhaka chala happy ga unde life ki, oka sudden ga disti tinattu mana madhya distance vachindhi 💔.Nenu em tappu cheyakundane, nuvvu naku punishment la ichindhi dry replies 😞. Nuvvu chesthuna avoid ni tatukuna, alavatu chesukuna ani orchukunna… kani nuvvu malli tirigi vastav anesi petkuna hope kuda poindi 💭💔.Appatidhaka entha happy ga unde vadini… oka sudden ga anthakanna ekkuva sad ayyanu 😢.“MAYBE THAT ENDED THERE” ani nenu naaku chepkoni settle ayya.', desktopPos: { x: '55%', y: '35%' } },
+                        { id: 'reunion', date: 'Mar 2025', title: 'Reunion', icon: '🧑‍🤝‍🧑', story: 'And then… March 🌸.Toofan entha pedda ga vachina ⛈️…Rai petti untey mountains ki emi cheyalekapoyindi ⛰️.Ade vidhamgaa… mana madhya vachina gap kuda,Naa meedha unna prema ki emi cheyalekapoyindi ❤️.Mana reunion oka manchi varam laga anipinchindi 🤲✨.Future lo emi jarigina… hope ni eppudu kolipokudadhu ani,Oka strong nammakam nenu build chesukunna 💭🙏.Aa rendu vaaralu entha badha tho gadapina…Nee tho unna rendu rojulu aa anni pain lu cover chesayi 😍💫."Adhi nanney nanney cheravache chanchala 🎶" nunchi,"Thanu chilipiga naguvulu chilikithey 🎶" ki transform ayyanu 🥹❤️.Eni misunderstandings jarigina… entha gap vachina…Oka gurthu eppudu mind lo undali Gouri 👉Narasimha eppatiki Gouri kosam wait chesthune untadu 💌🕰️..', desktopPos: { x: '30%', y: '30%' } },
+                        { id: 'gift', date: 'Jun 2025', title: 'The Surprise Gift', icon: '🎁', story: 'Nrml gaane nenu oka dumb and confused kid 😅… naku pedhaga selections ravvu. So oka dress tesukundham anukunna 👗… but what if 🤔… niku frnds evaraina dress istharu and adi nenu ichindanikante baguntundaa? Appudu nenu next year dhaka disappoint ayyi untanu 😔.Moreover… mana first birthday manam kalisi celebrate chesukunna di 🥳… so chalaaa special ga undali ani anukunna 💖. Andhuke andharini niku iche gift enti ani kanukundham anesi, Roshini number pattukuna ☎️.Kani lopu… ma frnd binding kosam stall ki vellanu 📚. Akkada naku Shinchan nachchesadu 🤭… and moreover adi stand la work ayye type 😍. So tesukuna.Later hostel ki vachaka… oka paper idea vachindhi ✨. Malakpet dhaka tirigi aa papers collect chesa 🏃‍♂️… ratrulu anta kurchoni for the first time in history artist ayya 🎨.Gift motham chesi room lo chusi 🫣… naku nachchesindi. Aa extra papers ani dasukuna chetha erukovatam kadhu… avi like na efforts ni chupinchai 💪❤️.Oka extent lo… aa gifts ninnu naku degara chesayi 🥹. Next time… inkaaa ekkuva suprise cheyyali ani fix ayya 🔥💝..', desktopPos: { x: '70%', y: '25%' } },
+                        { id: 'hug', date: 'Jun 26 2025', title: 'Our First Hug', icon: '🤗', story: 'Nee birthday + na maths exam day 📘✍️…Night anta chaduvukuni, mrng legisi straight ga ne degariki vachanu 😮‍💨❤️.Temple ki vellam… kothi kothi ga chesina sare…Manam chalaaa perfect ga pooja chesam 🙏✨.Nuvvu lekapothey… devudini chala korukunta 🤲. Kani nuvvu pakkana unnav kadha…Appudu simple ga oka korika matrame –“Next year kuda ila vasthey chalu” ani korukuna 🌸.Appudu ninnu dimpinappudu nrml ga sad anipinchindhi 😔…Kani birthday roju kuda ekkuva sepu lekunda avuthundhi aniEndhuko baaga badha padanu 💭💔. Andhuke nenu koncham melt ayi… hug chesukunna 🤗🫶. Adhi just oka hug kaadu… Adhi oka healing… Adhi oka warmth… Adhi nannu melt chesi, nannu complete chesina moment ❤️‍🔥.', desktopPos: { x: '40%', y: '15%' } },
+                        { id: 'zoo', date: 'Aug 24, 2025', title: 'Zoo Date', icon: '🐘', story: 'Naku asala elephants ni chudali ani endhuku anipinchindho… Zoo veldham anesa idea endhuku vachindho… naaku kuda clear ga teliyadhu 🐘💭. Kani zoo lo mana enjoyment verey level, Gouri 🥹💫.Unexpected surprises everywhere…Ni nadumu patukuni 🫶, niku animals ni chupistune…Kms kms naduchukunta tirigam 🚶‍♂️🚶‍♀️.Madhyalo nuvvu “Adhi ayitha… ee pani chestha animals ni chusukunta” ani chepthu cute ga 😍. Andharu valla kids ki explain chestunte… Nenu matram naa kid Gouri ki explain chesthu full enjoy chesa 💕.Nuvvu nannu “pattt pattt” anesi kotadam verey vishyam 😂…Kani naku aa debalu kuda nachchesayi 🫣❤️.', desktopPos: { x: '60%', y: '10%' } },
+                        { id: 'kiss', date: 'Aug 26, 2025', title: 'Our First Kiss', icon: '💋', story: 'NO WORDS ABOUT THIS JUST 404 ERROR ANTHEY', desktopPos: { x: '25%', y: '5%' } },
+                        { id: 'promise', date: 'FOREVER', title: 'Promise of Love', icon: '💍', story: 'Chesina promise edhi kuda ninnu mosam cheyataniki ayithey asala kadhu gouri, prematho chepindhi edhi ayina sare flirting kadhu niku mata ichinatlu nennu mi intlo opistha mi relatives andharaki oka arranged marriage annatlu untundhi and niku manchi rich dreamt life istha happy ga chusukunta i promise you this nennu ninnu life long vadalakunda same love inka increase chesukuntu na standards penchukuntu love chesthune unta "I PROMISE YOU THAT I LOVE YOU"', desktopPos: { x: '75%', y: '2%' } }
                     ];
 
                     const container = document.querySelector('#journey .jt-container');
@@ -1322,7 +1317,7 @@
                     function buildTree() {
                         // Clear previous content
                         container.innerHTML = '';
-                        
+                       
                         const isMobile = window.innerWidth <= 768;
 
                         const treeWrapper = document.createElement('div');
@@ -1336,15 +1331,15 @@
                         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
                         treeWrapper.appendChild(svg);
-                        
+                       
                         // Create containers for cards and particles
                         const cardsContainer = document.createElement('div');
                         const particleContainer = document.createElement('div');
                         treeWrapper.appendChild(cardsContainer);
                         treeWrapper.appendChild(particleContainer);
-                        
+                       
                         container.appendChild(treeWrapper);
-                        
+                       
                         // Build UI based on screen size
                         if (isMobile) {
                             buildMobileVine(svg, treeWrapper, cardsContainer);
@@ -1352,12 +1347,12 @@
                             buildDesktopTree(svg, treeWrapper, cardsContainer);
                             buildLegend();
                         }
-                        
+                       
                         createParticles(particleContainer, isMobile);
                         setupEventListeners();
                         animateTree();
                     }
-                    
+                   
                     function buildDesktopTree(svg, wrapper, cardsContainer) {
                         const paths = [
                             'M 400 600 C 400 500, 380 450, 380 400', // Trunk
@@ -1370,7 +1365,7 @@
                             'M 240 200 C 280 150, 220 100, 200 50',   // Branch far left
                             'M 560 230 C 500 180, 600 100, 600 30',   // Branch far right
                         ];
-                        
+                       
                         paths.forEach(d => {
                             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                             path.setAttribute('d', d);
@@ -1385,19 +1380,19 @@
                             createCard(item, cardsContainer);
                         });
                     }
-                    
+                   
                     function buildMobileVine(svg, wrapper, cardsContainer) {
                         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                         path.setAttribute('d', 'M 400 600 V 20');
                         path.setAttribute('class', 'jt-branch');
                         svg.appendChild(path);
-                        
+                       
                         const totalMilestones = milestoneData.length;
                         milestoneData.forEach((item, index) => {
                             const yPercentage = 95 - (index / (totalMilestones -1)) * 90;
                             const xPercentage = (index % 2 === 0) ? 45 : 55;
                             item.mobilePos = { x: `${xPercentage}%`, y: `${yPercentage}%` };
-                            
+                           
                             createNode(item, wrapper, 'mobile');
                             createCard(item, cardsContainer);
                         });
@@ -1417,7 +1412,7 @@
                         const pos = device === 'mobile' ? item.mobilePos : item.desktopPos;
                         node.style.left = pos.x;
                         node.style.top = pos.y;
-                        
+                       
                         wrapper.appendChild(node);
                     }
 
@@ -1435,13 +1430,13 @@
                         `;
                         cardsContainer.appendChild(card);
                     }
-                    
+                   
                     function buildLegend() {
                         const legend = document.createElement('div');
                         legend.className = 'jt-legend';
                         legend.innerHTML = '<h3 class="font-playfair text-lg text-pink-900 mb-2">Our Story</h3>';
                         const list = document.createElement('ul');
-                        
+                       
                         milestoneData.forEach(item => {
                             const li = document.createElement('li');
                             li.className = 'jt-legend-item text-pink-800';
@@ -1449,11 +1444,11 @@
                             li.dataset.milestoneId = item.id;
                             list.appendChild(li);
                         });
-                        
+                       
                         legend.appendChild(list);
                         container.appendChild(legend);
                     }
-                    
+                   
                     function createParticles(particleContainer, isMobile) {
                         const particleCount = isMobile ? 15 : 30;
                         const particles = '♡♥';
@@ -1462,7 +1457,7 @@
                             p.className = 'jt-particle';
                             p.textContent = particles[Math.floor(Math.random() * particles.length)];
                             particleContainer.appendChild(p);
-                            
+                           
                             gsap.set(p, {
                                 x: gsap.utils.random(0, container.clientWidth),
                                 y: gsap.utils.random(0, container.clientHeight * 1.2),
@@ -1490,7 +1485,7 @@
                                 document.querySelectorAll('.jt-milestone-node').forEach(n => n.classList.add('jt-pulse-anim'));
                             }
                         });
-                        
+                       
                         const branches = document.querySelectorAll('.jt-branch');
                         const nodes = document.querySelectorAll('.jt-milestone-node');
                         const svg = document.querySelector('.jt-svg');
@@ -1500,13 +1495,13 @@
                             gsap.set(nodes, { opacity: 1, scale: 1 });
                             return;
                         }
-                        
+                       
                         // --- FASTER ANIMATION: Animate branches drawing ---
                         branches.forEach(branch => {
                             const length = branch.getTotalLength();
                             gsap.set(branch, { strokeDasharray: length, strokeDashoffset: length });
                             mainTimeline.to(branch, { strokeDashoffset: 0, duration: 1, ease: 'power1.inOut' }, "-=0.8"); // FASTER
-                            
+                           
                             // Sprout leaves along the branches
                              for(let i = 0; i < 10; i++) {
                                 const leaf = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -1524,7 +1519,7 @@
                                 }, "-=0.05"); // FASTER
                             }
                         });
-                        
+                       
                         // Animate nodes appearing
                         mainTimeline.to(nodes, {
                             opacity: 1,
@@ -1567,7 +1562,7 @@
                             const node = e.target.closest('.jt-milestone-node');
                             const legendItem = e.target.closest('.jt-legend-item');
                             const closeBtn = e.target.closest('.jt-card-close-btn');
-                            
+                           
                             if (node) {
                                 showCard(node.dataset.milestoneId);
                             } else if (legendItem) {
@@ -1592,9 +1587,9 @@
                                 hideAllCards();
                             }
                         });
-                        
+                       
                         document.getElementById('jt-replay-btn').addEventListener('click', () => {
-                             document.querySelectorAll('.jt-milestone-node').forEach(n => n.classList.remove('jt-pulse-anim'));
+                              document.querySelectorAll('.jt-milestone-node').forEach(n => n.classList.remove('jt-pulse-anim'));
                             if (mainTimeline) mainTimeline.restart();
                         });
                     }
@@ -1607,14 +1602,14 @@
         <!-- =================================================================================== -->
         <!-- END: Animated Journey Tree Page -->
         <!-- =================================================================================== -->
-            
+           
         <!-- Game Page -->
         <section id="game" class="page flex flex-col items-center justify-center">
              <div class="container mx-auto px-4 py-12 text-center max-w-4xl">
                     <div class="bg-white/20 p-8 md:p-12 rounded-lg shadow-2xl shadow-pink-900/50">
-                        
+                       
                         <div id="game-menu">
-                            <h2 class="font-playfair text-3xl md:text-4xl text-pink-900">A Fun Little Arcade</h2>
+                            <h2 class="font-playfair text-3xl md:text-4xl text-pink-900">FREE FIRE ANTHA KAKAPOYINA EDHO NIKOSAM EE GAMES</h2>
                             <p class="text-pink-800 my-4">Pick a game to play, my love!</p>
                             <div class="flex flex-col items-center gap-4 mt-6">
                                 <button class="game-menu-button" data-game="catch-the-stars">Catch the Stars</button>
@@ -1626,20 +1621,20 @@
                         </div>
 
                         <div id="catch-the-stars-game" class="game-container">
-                           <button class="back-to-games-btn">← Back to Games</button>
                             <h2 class="font-playfair text-3xl md:text-4xl text-pink-900">Catch the Stars!</h2>
                             <p class="text-pink-800 my-4">A game for the star of my life.</p>
                             <div class="game-instructions mb-4">
-                                <p class="font-bold">Score: <span id="score">0</span> | Time: <span id="time">30</span></p>
+                                <p class="font-bold">Score: <span id="score">0</span> | Time: <span id="time">20</span></p>
                             </div>
                             <canvas id="game-canvas"></canvas>
                             <button id="play-again-btn" class="game-menu-button">Play Again</button>
+                            <button class="back-to-games-btn">← Back to Games</button>
                         </div>
 
                          <div id="spin-the-wheel-game" class="game-container">
                                 <button class="back-to-games-btn">← Back to Games</button>
                                 <h2 class="font-playfair text-3xl md:text-4xl text-pink-900">Wheel of Love</h2>
-                                <p class="text-pink-800 my-4">Spin the wheel to see what fate has for us!</p>
+                                <p class="text-pink-800 my-4">Spin the wheel to see what fate tells us to do!</p>
                                 <div id="wheel-container">
                                     <canvas id="wheel-canvas" width="350" height="350"></canvas>
                                     <div id="wheel-pointer"></div>
@@ -1655,7 +1650,7 @@
                            <div id="qualities-game-grid"></div>
                            <div id="qualities-status-message">Whoops! Not that one.</div>
                         </div>
-                        
+                       
                         <div id="memory-game" class="game-container">
                            <button class="back-to-games-btn">← Back to Games</button> <h2 class="font-playfair text-3xl md:text-4xl text-pink-900">Memory Match</h2>
                            <p class="text-pink-800 my-4">Match the moments that made us!</p>
@@ -1681,10 +1676,10 @@
         <section id="question" class="page flex justify-center items-center">
             <div class="question-overlay"></div>
             <div class="question-content text-center flex flex-col items-center p-4">
-                
+               
                 <div id="pre-proposal-text" class="opacity-0 max-w-2xl">
                     <h2 class="font-playfair text-3xl md:text-4xl text-pink-200 mb-4">Gouri, our journey has been incredible...</h2>
-                    <p class="text-white/80 text-lg md:text-xl mb-8">From a simple prank to a love that feels like destiny. Every laugh, every challenge, and every quiet moment has led us here. To this one, perfect moment.</p>
+                    <p class="text-white/80 text-lg md:text-xl mb-8">From a simple prank to a love that feels like destiny. Every laugh, every challenge, and every quiet moment has led us here. To this one, perfect moment, Nennu ninnu adugudham anukuna one FINAL QUESTION.</p>
                 </div>
 
                 <svg id="ring-box-svg" viewBox="0 0 100 100">
@@ -1708,7 +1703,7 @@
                 </svg>
 
                 <div id="proposal-container" class="opacity-0">
-                    <h2 class="font-playfair text-4xl md:text-5xl text-pink-200 mb-4 mt-8">So I have one final question for you...</h2>
+                    <h2 class="font-playfair text-4xl md:text-5xl text-pink-200 mb-4 mt-8">So the one final question for you is...</h2>
                     <div class="mx-auto max-w-max">
                         <h1 id="proposal-question" class="font-playfair text-5xl md:text-7xl font-bold text-white tracking-wider">Will You Marry Me?</h1>
                     </div>
@@ -1725,16 +1720,16 @@
     <div id="confirmation-modal" class="fixed top-0 left-0 w-full h-full bg-black/80 flex justify-center items-center">
         <div id="modal-content" class="modal-box transform transition-transform scale-95">
              <button id="close-modal-btn" title="Close">×</button>
-            <h2 class="font-great-vibes text-6xl text-pink-800 mb-2">She said Yes!</h2>
-            <p class="text-pink-700 mb-6 text-lg leading-relaxed">"My story is you. My song is you.<br>My forever starts now, with you."</p>
+            <h2 class="font-great-vibes text-6xl text-pink-800 mb-2">She said yes!</h2>
+            <p class="text-pink-700 mb-6 text-lg leading-relaxed">"Dongaaaa naku telusu niku nennu antey first nunche love anesi.<br>Antha fast ga opukuntav anukoledhu sarle na gouri ki life ivataniki nennu appudo ready aee."</p>
             <div class="text-5xl text-pink-500">💍</div>
         </div>
     </div>
-    
+   
     <div id="moments-surprise-modal">
         <div class="modal-box">
             <button class="close-btn" title="Close">×</button>
-            <p class="font-playfair text-2xl text-pink-800">Every moment with you is a treasure, and I’ll keep creating more with you, Gouri ❤️</p>
+            <p class="font-playfair text-2xl text-pink-800">NOTE:-Na akkalu idharu phones pattukuni gouri eyes and smile ni different angles lo cover cheyali ani mi thmdu vinnapam ❤️</p>
         </div>
     </div>
 
@@ -1755,6 +1750,12 @@
             <div class="font-lora text-lg space-y-4 text-gray-700 leading-relaxed">
                 <p>If you're reading this, it means you've journeyed through the little world I built for you. Every part of it, from the silly games to the shared memories, is a reflection of the joy you've brought into my life. It all started with a prank, a moment of playful chance, but it led me to the most profound and genuine love I have ever known.</p>
                 <p>I remember the endless calls, the first time I saw you, the way my heart felt like it finally found its home. I remember your birthday, our bus rides, and even the difficult times that only made us stronger. Every moment with you is a treasure, a beautiful chapter in the story I want to write for the rest of my life.</p>
+                <p>I remember the endless calls, the first time I saw you, the way my heart felt like it finally found its home. I remember your birthday, our bus rides, and even the difficult times that only made us stronger. Every moment with you is a treasure, a beautiful chapter in the story I want to write for the rest of my life.</p>
+                <p>I remember the endless calls, the first time I saw you, the way my heart felt like it finally found its home. I remember your birthday, our bus rides, and even the difficult times that only made us stronger. Every moment with you is a treasure, a beautiful chapter in the story I want to write for the rest of my life.</p>
+                <p>I remember the endless calls, the first time I saw you, the way my heart felt like it finally found its home. I remember your birthday, our bus rides, and even the difficult times that only made us stronger. Every moment with you is a treasure, a beautiful chapter in the story I want to write for the rest of my life.</p>
+                <p>I remember the endless calls, the first time I saw you, the way my heart felt like it finally found its home. I remember your birthday, our bus rides, and even the difficult times that only made us stronger. Every moment with you is a treasure, a beautiful chapter in the story I want to write for the rest of my life.</p>
+                <p>I remember the endless calls, the first time I saw you, the way my heart felt like it finally found its home. I remember your birthday, our bus rides, and even the difficult times that only made us stronger. Every moment with you is a treasure, a beautiful chapter in the story I want to write for the rest of my life.</p>
+                <p>I remember the endless calls, the first time I saw you, the way my heart felt like it finally found its home. I remember your birthday, our bus rides, and even the difficult times that only made us stronger. Every moment with you is a treasure, a beautiful chapter in the story I want to write for the rest of my life.</p>
                 <p>You are my best friend, my confidante, my greatest adventure, and my calmest shore. The thought of our future—building a home, traveling the world, and simply sharing quiet moments—fills me with a happiness I can't describe. You are my dream come true.</p>
             </div>
             <div class="signature font-dancing-script text-2xl text-right mt-8 text-pink-800">
@@ -1766,16 +1767,16 @@
 
     <!-- Footer is hidden until login is successful -->
     <footer id="app-footer" class="hidden">
-        <p>Created with love for Gouri Prasanna, my forever and always. &nbsp;❤</p>
+        <p>Narasimha goud love for Gouri Prasanna, my forever and always. &nbsp;❤</p>
     </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, Draggable);
-        
+       
         // --- Login screen entrance animation ---
         gsap.from('#login-overlay > div', { duration: 1.5, x: '100vw', ease: 'power3.out', delay: 0.5 });
-        
+       
         // --- Set initial background to GIF ---
         document.body.classList.add('gif-background');
 
@@ -1790,14 +1791,14 @@
         const passwordInput = document.getElementById('password-input');
         const pages = document.querySelectorAll('.page');
         const errorMessage = document.getElementById('error-message');
-        
+       
         let momentsInitialized = false;
         let letterInitialized = false;
         let journeyInitialized = false;
         let questionInitialized = false;
         let photoGridInitialized = false; 
         let dreamsInitialized = false; // NEW flag for the Dreams page
-        
+       
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const noBtnMessage = document.getElementById('no-btn-message');
@@ -1820,7 +1821,7 @@
         function setupEventListeners() {
             loginButton.addEventListener('click', unlockPage);
             passwordInput.addEventListener('keyup', (event) => { if (event.key === "Enter") unlockPage(); });
-            
+           
             mainNav.addEventListener('click', (e) => {
                 if (e.target.matches('.nav-link')) {
                     e.preventDefault();
@@ -1828,13 +1829,13 @@
                     showPage(pageId);
                 }
             });
-            
+           
             const momentsModal = document.getElementById('moments-surprise-modal');
             momentsModal.querySelector('.close-btn').addEventListener('click', hideMomentsSurprise);
             momentsModal.addEventListener('click', (e) => {
                  if(e.target === momentsModal) hideMomentsSurprise();
             });
-            
+           
             document.getElementById('moments-tabs').addEventListener('click', (e) => {
                 if(e.target.matches('.moment-tab-btn')) {
                     const tabId = e.target.dataset.tab;
@@ -1897,7 +1898,7 @@
             if (newPage) {
                 newPage.classList.add('active');
                 newPage.scrollTop = 0; 
-                
+               
                 if (pageId === 'welcome') {
                     const welcomeContent = document.querySelector('#welcome > div');
                     const heading = welcomeContent.querySelector('h1');
@@ -1908,7 +1909,7 @@
                         });
                     }
                 }
-                
+               
                 if (pageId === 'letter' && !letterInitialized) {
                     initLetterPage();
                     letterInitialized = true;
@@ -1926,14 +1927,14 @@
                     initDreamsPage();
                     dreamsInitialized = true;
                 }
-                
+               
                 if (pageId === 'journey' && !journeyInitialized) {
                     if (typeof initJourneyPage === 'function') {
                         initJourneyPage();
                     }
                     journeyInitialized = true;
                 }
-                
+               
                 if (pageId === 'game') {
                     showGameMenu();
                 }
@@ -1942,7 +1943,7 @@
                     questionInitialized = true;
                 }
             }
-            
+           
             const navLinks = mainNav.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.classList.remove('nav-active');
@@ -1969,7 +1970,7 @@
                 container.appendChild(particle);
             }
         }
-        
+       
         function startCountdown() {
             const countDownDate = new Date(specialDate).getTime();
             const x = setInterval(function() {
@@ -1996,7 +1997,7 @@
             modal.style.visibility = 'visible';
             gsap.to(modal, { opacity: 1, duration: 0.5 });
             gsap.fromTo(modalContent, { scale: 0.8 }, { scale: 1, duration: 0.5, ease: 'back.out(1.7)' });
-            
+           
             const duration = 5 * 1000;
             const end = Date.now() + duration;
             (function frame() {
@@ -2034,7 +2035,7 @@
                 <p class="text-lg font-bold text-pink-600">${hisSign} ♐</p>
             `;
         }
-        
+       
         function showMomentsSurprise() {
             const modal = document.getElementById('moments-surprise-modal');
             modal.style.visibility = 'visible';
@@ -2099,7 +2100,7 @@
                         <img src="${photo.src}" alt="${photo.caption}" onerror="this.onerror=null;this.src='https://placehold.co/120x110/fbcfe8/831843?text=Memory';">
                         <p>${photo.caption}</p>
                   `;
-                  
+                 
                   const pos = heartCoords[index % heartCoords.length];
                   gsap.set(photoEl, { top: pos.y, left: pos.x, transform: `translate(-50%, -50%) rotate(${Math.random()*20-10}deg)` });
 
@@ -2114,17 +2115,17 @@
                      opacity: 1, 
                      scale: 1, 
                      stagger: {
-                         from: "center",
-                         amount: 0.5
+                          from: "center",
+                          amount: 0.5
                      },
                      ease: 'back.out(1.7)',
                      onComplete: () => {
-                         if (!sessionStorage.getItem('momentsSurpriseShown')) {
-                             setTimeout(() => {
-                                 showMomentsSurprise();
-                                 sessionStorage.setItem('momentsSurpriseShown', 'true');
-                             }, 1000);
-                         }
+                          if (!sessionStorage.getItem('momentsSurpriseShown')) {
+                               setTimeout(() => {
+                                   showMomentsSurprise();
+                                   sessionStorage.setItem('momentsSurpriseShown', 'true');
+                               }, 1000);
+                          }
                      }
                  }
              );
@@ -2195,7 +2196,7 @@
                 });
             }
         }
-        
+       
         function showLightbox(src, caption) {
             let lightbox = document.getElementById('lightbox-overlay');
             if (!lightbox) {
@@ -2213,7 +2214,7 @@
 
             lightbox.querySelector('img').src = src;
             lightbox.querySelector('p').textContent = caption;
-            
+           
             lightbox.style.visibility = 'visible';
             gsap.to(lightbox, { opacity: 1, duration: 0.3 });
             gsap.from(lightbox.querySelector('#lightbox-content'), { scale: 0.8, duration: 0.3, ease: 'back.out(1.7)' });
@@ -2229,7 +2230,7 @@
                 });
             }
         }
-        
+       
         // --- NEW IMPROVED Letter Page Animation ---
         function initLetterPage() {
             const envelopeWrapper = document.getElementById('envelopeWrapper');
@@ -2269,48 +2270,76 @@
         }
 
 
-        // --- Dreams Page Logic with ENHANCED ANIMATIONS ---
+        // --- MODIFIED Dreams Page Logic with Notice Board ---
         function initDreamsPage() {
             const wrapper = document.getElementById('dream-jar-wrapper');
             const input = document.getElementById('dream-input');
             const addBtn = document.getElementById('add-dream-btn');
 
-            const jar = document.createElement('div');
-            jar.className = 'dream-jar';
-            wrapper.appendChild(jar);
+            // Create the notice board instead of the jar
+            wrapper.innerHTML = '';
+            const board = document.createElement('div');
+            board.className = 'notice-board';
+            wrapper.appendChild(board);
 
             const preloadedDreams = ["Ride to Manali", "Camping under stars", "Our cozy home", "Adopt a dog", "Cook together"];
 
-            function addDreamToJar(text, isPreload) {
+            // Renamed function for clarity
+            function addDreamToBoard(text, isPreload) {
                 const note = document.createElement('div');
                 note.className = 'dream-note';
                 note.textContent = text;
-                wrapper.appendChild(note); 
+                // Append the note to the board, not the wrapper
+                board.appendChild(note);
 
-                const jarRect = jar.getBoundingClientRect();
-                const wrapperRect = wrapper.getBoundingClientRect();
+                // Calculate position within the board
+                const boardRect = board.getBoundingClientRect();
 
-                const targetX = gsap.utils.random(jar.offsetLeft + 20, jar.offsetLeft + jar.offsetWidth - note.offsetWidth - 20);
-                const targetY = gsap.utils.random(jar.offsetTop + 40, jar.offsetTop + jar.offsetHeight - note.offsetHeight - 20);
+                // Target coordinates are relative to the board itself
+                const targetX = gsap.utils.random(20, board.offsetWidth - note.offsetWidth - 20);
+                const targetY = gsap.utils.random(20, board.offsetHeight - note.offsetHeight - 20);
 
                 if (isPreload) {
-                    gsap.set(note, { x: targetX, y: targetY, rotation: gsap.utils.random(-15, 15) });
+                    gsap.set(note, { x: targetX, y: targetY, rotation: gsap.utils.random(-8, 8) });
                     gsap.to(note, { opacity: 1, duration: 1 });
                 } else {
                     const inputRect = input.getBoundingClientRect();
-                    const startX = (inputRect.left - wrapperRect.left) + (inputRect.width / 2);
-                    const startY = inputRect.top - wrapperRect.top;
-                    gsap.fromTo(note, { x: startX, y: startY, scale: 0.1, opacity: 0 }, { x: targetX, y: targetY, scale: 1, opacity: 1, rotation: gsap.utils.random(-15, 15), duration: 1.5, ease: 'back.inOut(1.7)' });
+                    // Start position needs to be calculated relative to the board's parent (wrapper)
+                    // then transformed into board-local coordinates
+                    const wrapperRect = wrapper.getBoundingClientRect();
+                    const startX = (inputRect.left - boardRect.left) + (inputRect.width / 2);
+                    const startY = (inputRect.top - boardRect.top) + (inputRect.height / 2);
+
+                    gsap.fromTo(note, 
+                        { x: startX, y: startY, scale: 0.1, opacity: 0 }, 
+                        { x: targetX, y: targetY, scale: 1, opacity: 1, rotation: gsap.utils.random(-8, 8), duration: 1.5, ease: 'elastic.out(1, 0.75)' }
+                    );
                 }
+
+                // Make the note draggable
+                Draggable.create(note, {
+                    type: "x,y",
+                    bounds: board, // Constrain dragging to within the notice board
+                    cursor: "grab",
+                    activeCursor: "grabbing",
+                    onDragStart: function() {
+                        gsap.to(this.target, { scale: 1.1, zIndex: 100, duration: 0.2, boxShadow: '0 5px 15px rgba(0,0,0,0.3)' }); // Enlarge on drag
+                    },
+                    onDragEnd: function() {
+                        gsap.to(this.target, { scale: 1, zIndex: 1, duration: 0.2, boxShadow: '0 3px 6px rgba(0,0,0,0.15)' }); // Return to normal size
+                    }
+                });
             }
 
             preloadedDreams.forEach((dream, i) => {
-                setTimeout(() => addDreamToJar(dream, true), i * 300 + 500);
+                // Renamed function call
+                setTimeout(() => addDreamToBoard(dream, true), i * 300 + 500);
             });
 
             addBtn.addEventListener('click', () => {
                 if (input.value.trim()) {
-                    addDreamToJar(input.value.trim(), false);
+                    // Renamed function call
+                    addDreamToBoard(input.value.trim(), false);
                     input.value = '';
                 }
             });
@@ -2320,7 +2349,6 @@
                     addBtn.click();
                 }
             });
-
             // SCROLL ANIMATIONS FOR DREAM SECTIONS
             const dreamSections = document.querySelectorAll('#dreams .dream-section');
             dreamSections.forEach(section => {
@@ -2349,7 +2377,7 @@
                 }
             });
         }
-        
+       
         // --- GAME LOGIC ---
         function showGameMenu() {
             clearAllGameIntervals();
@@ -2363,7 +2391,7 @@
             document.getElementById('game-menu').style.display = 'none';
             document.querySelectorAll('.game-container').forEach(c => c.style.display = 'none');
             document.getElementById(`${gameId}-game`).style.display = 'block';
-            
+           
             switch(gameId) {
                 case 'catch-the-stars': initCatchTheStarsGame(); break;
                 case 'qualities': initQualitiesGame(); break;
@@ -2372,7 +2400,7 @@
                 case 'spin-the-wheel': initSpinTheWheelGame(); break;
             }
         }
-        
+       
         function initCatchTheStarsGame() {
             const canvas = document.getElementById('game-canvas');
             const scoreEl = document.getElementById('score');
@@ -2473,29 +2501,29 @@
             function endGame() {
                 isGameOver = true;
                 clearAllGameIntervals();
-                
+               
                 const finalScore = 143; // Set final score to 143
                 scoreEl.textContent = finalScore;
 
                 ctx.fillStyle = 'rgba(30, 41, 59, 0.7)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
+               
                 ctx.textAlign = 'center'; 
                 ctx.fillStyle = 'white'; 
-                
+               
                 ctx.shadowColor = '#f9a8d4';
                 ctx.shadowBlur = 20;
-                
+               
                 ctx.font = `30px "Great Vibes", cursive`; 
                 ctx.fillText(`Your score is ${finalScore}`, canvas.width / 2, canvas.height / 2 - 20);
                 ctx.font = `40px "Great Vibes", cursive`; 
                 ctx.fillText(`you won me!`, canvas.width / 2, canvas.height / 2 + 30);
-                
+               
                 ctx.shadowBlur = 0;
-                
+               
                 playAgainBtn.style.display = 'inline-block';
             }
-            
+           
             function runGame() {
                 isGameOver = false; playAgainBtn.style.display = 'none'; resizeCanvas();
                 score = 0; time = 30; fallingItems = []; particles = [];
@@ -2519,7 +2547,7 @@
                     fallingItems.push(new FallingItem(x, -size, size, speed, type));
                 }, 400); // Slightly faster generation
             }
-            
+           
             playAgainBtn.onclick = runGame;
             // ... inside initCatchTheStarsGame()
 
@@ -2528,7 +2556,7 @@
                 const rect = canvas.getBoundingClientRect();
                 // Check if it's a touch event or a mouse event to get the correct coordinate
                 const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                
+               
                 moon.x = clientX - rect.left - moon.width / 2;
 
                 if (moon.x < 0) moon.x = 0;
@@ -2545,7 +2573,7 @@
             window.addEventListener('resize', resizeCanvas);
             runGame();
         }
-        
+       
         function initQualitiesGame() {
             const grid = document.getElementById('qualities-game-grid');
             const foundCounter = document.getElementById('qualities-found');
@@ -2560,7 +2588,7 @@
                 { text: 'Always Late', type: 'negative' }, { text: 'Steals Fries', type: 'negative' },
                 { text: 'Sings Off-Key', type: 'negative' }
             ].sort(() => 0.5 - Math.random());
-            
+           
             let foundCount = 0;
             grid.innerHTML = '';
             foundCounter.textContent = '0';
@@ -2613,8 +2641,8 @@
                  card.className = 'memory-card';
                  card.dataset.icon = icon;
                  card.innerHTML = `
-                      <div class="card-face card-front">${icon}</div>
-                      <div class="card-face card-back">♥</div>
+                        <div class="card-face card-front">${icon}</div>
+                        <div class="card-face card-back">♥</div>
                  `;
                  grid.appendChild(card);
              });
@@ -2650,7 +2678,7 @@
                  }
              }
         }
-        
+       
         function initQuizGame() {
             const questions = [
                 { q: "What started our entire story?", o: ["A text message", "A phone call", "An Instagram prank", "A chance meeting"], a: 2 },
@@ -2665,11 +2693,11 @@
             ];
             let currentQ = 0;
             let score = 0;
-            
+           
             const questionEl = document.getElementById('quiz-question');
             const optionsEl = document.getElementById('quiz-options');
             const feedbackEl = document.getElementById('quiz-feedback');
-            
+           
             function showQuestion() {
                 if (currentQ >= questions.length) {
                     optionsEl.innerHTML = '';
@@ -2724,16 +2752,16 @@
             ];
             const numSegments = segments.length;
             const anglePerSegment = 360 / numSegments;
-            
+           
             function drawWheel() {
                 const centerX = canvas.width / 2;
                 const centerY = canvas.height / 2;
                 const radius = canvas.width / 2 - 10;
-                
+               
                 ctx.clearRect(0,0,canvas.width, canvas.height);
                 ctx.save();
                 ctx.translate(centerX, centerY);
-                
+               
                 segments.forEach((segment, i) => {
                     ctx.beginPath();
                     ctx.moveTo(0,0);
@@ -2762,7 +2790,7 @@
                 if(spinBtn.disabled) return;
                 spinBtn.disabled = true;
                 const spinAngle = Math.random() * 360 + 360 * 5; 
-                
+               
                 gsap.to(canvas, {
                     rotation: `+=${spinAngle}`,
                     duration: 5,
@@ -2782,14 +2810,14 @@
             };
             drawWheel();
         }
-        
+       
         function showWheelResult(text) {
             const modal = document.getElementById('wheel-result-modal');
             document.getElementById('wheel-result-text').innerHTML = text;
             modal.classList.remove('hidden');
             gsap.from(modal.querySelector('.modal-box'), { scale: 0.7, opacity: 0, duration: 0.5, ease: 'back.out(1.7)' });
         }
-        
+       
         function hideWheelResult() {
              const modal = document.getElementById('wheel-result-modal');
              gsap.to(modal.querySelector('.modal-box'), { scale: 0.7, opacity: 0, duration: 0.3, ease: 'power2.in', onComplete: () => {
@@ -2799,7 +2827,7 @@
 
         // --- Question Page Logic ---
         function initPlayfulNoButton() {
-            const messages = ["Are you sure?", "Really?", "Think again!", "My heart!", "Don't do it!", "Last chance!"];
+            const messages = ["Show kid?", "Okasari alochinchuko!", "Pakka na?", "AREYY EM AYINDHI NIKU!", "Please!", "Last chance!"];
             let messageTimeout;
             let isEscaping = false;
 
@@ -2813,12 +2841,12 @@
 
                 const wrapperRect = buttonWrapper.getBoundingClientRect();
                 const btnRect = noBtn.getBoundingClientRect();
-                
+               
                 const newTop = Math.random() * (wrapperRect.height - btnRect.height);
                 const newLeft = Math.random() * (wrapperRect.width - btnRect.width);
 
                 gsap.to(noBtn, { top: newTop, left: newLeft, duration: 0.4, ease: 'power2.out' });
-                
+               
                 noBtnMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
                 gsap.to(noBtnMessage, { opacity: 1, visibility: 'visible', duration: 0.2 });
 
@@ -2871,7 +2899,7 @@
                         onComplete: () => particle.remove()
                     });
                 }
-                
+               
                 gsap.timeline()
                   .to(preProposalText, { opacity: 0, duration: 1 })
                   .to(proposalContainer, { opacity: 1, duration: 1 }, "-=0.5")
@@ -2899,7 +2927,5 @@
 
 </body>
 </html>
-
-
 
 
