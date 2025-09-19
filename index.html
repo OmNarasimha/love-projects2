@@ -2018,7 +2018,7 @@
         }
 
         function getZodiacSign(day, month) {
-            const signs = [ "Libra"];
+            const signs = ["Capricorn", "Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Libra", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"];
             const dates = [20, 19, 21, 20, 21, 21, 23, 23, 23, 23, 22, 22];
             return day < dates[month-1] ? signs[month-1] : signs[month];
         }
